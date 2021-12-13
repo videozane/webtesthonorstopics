@@ -1,17 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>podio</title>
   </head>
 
   <body>
-<h1 style = "color: LimeGreen;", >welcome to <em>asian pear</em></h1>
-<p> hey mamas join khws from 9-10 every wednesday @ mixlr.com/khws </p>
-<p> things we <strong>excel</strong> at</p>
-<ul>
-  <li> having meaningful conversations</li>
-  <li> playing a <em>diverse and well ordered</em> hour of music </li>
-  <li> preparing our setlists really early in advance </li>
+    <div class = "topbar">
+    </div>
+
+    <div class = "spicy">
+      <h1>welcome to <em>asian pear</em></h1>
+    </div>
+  <p class ="intro"> hey mamas join khws from 9-10 every wednesday @ mixlr.com/khws </p>
+  <p> things we <strong>excel</strong> at</p>
+  <ul>
+    <li> having meaningful conversations</li>
+    <li> playing a <em>diverse and well ordered</em> hour of music </li>
+    <li> preparing our setlists really early in advance </li>
+</ul>
+
+    <div class = "box2"> probably a description!</div>
+    <div class = "buttons">
+    <div class = "box1"> button 1</div>
+    <div class = "box1"> button 2</div>
+    <div class = "box1"> button 3?</div>
+  </div>
+
+  <div class = "simon">
+    <button class = "b1" id = "b1">button1</button>
+    <button class = "b2" id = "b2">button2</button>
+    <button class = "b3" id = "b3">button3</button>
+    <button class = "b4" id = "b4">button4</button>
+  </div>
   </body>
+
+  <script>
+  var greenbutton = document.getElementById("b1");
+  document.getElementById("b1").addEventListener("click", function(){
+      var random =  Math.floor(Math.random() * (4 - 1 + 1) + 1);
+      var classString = "b" + random;
+      var currentClass = greenbutton.classList;
+      greenbutton.classList.remove(currentClass);
+      greenbutton.classList.add(classString);
+
+  });
+
+  </script>
 
 </html>

@@ -1,0 +1,87 @@
+body{
+  background-color: #CCE0FF
+}
+
+.spicy{
+  color: LimeGreen;
+  text-align: center;
+  font-size: 45px;
+  text-shadow: white 5px 5px;
+}
+
+.topbar{
+  height:300px;
+  background: url("khws.png");
+  background-size: contain;
+}
+
+.intro{
+  text-align:center;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  text-shadow: LimeGreen 3px 1px;
+  border-radius: 20px;
+  border-width: 3px;
+
+}
+
+p{
+  border: solid 1px #B28DFF;
+  padding: 4px;
+}
+.buttons{
+  width: auto;
+  margin:auto;
+  text-align: center;
+}
+.box1{
+  border-radius: 25px;
+  width: 100px;
+  height: 220px;
+  background-color: LimeGreen;
+  display: inline-block;
+  margin: 0px auto;
+  padding:inherit;
+
+}
+.box2{
+  width: 400px;
+  height:300px;
+  background-color:#B28DFF;
+  margin: auto;
+
+}
+
+.simon{
+  align: center;
+  background-color: black;
+  margin: 50;
+  min-height: 500px;
+  min-width: 300px;
+
+
+}
+
+.b1, .b2, .b3, .b4{
+  align: center;
+  color: black;
+  height: 100px;
+  width: 100px;
+}
+
+.b1{
+  background-color: Green;
+}
+
+.b2{
+  background-color: blue;
+}
+
+.b3{
+  background-color: red;
+}
+
+.b4{
+  background-color: yellow;
+}
