@@ -54,7 +54,7 @@ p{
 }
 
 .simon{
-  align: center;
+  align-content: center;
   background-color: black;
   margin: 50;
   min-height: 500px;
@@ -63,25 +63,39 @@ p{
 
 }
 
-.b1, .b2, .b3, .b4{
-  align: center;
+.b1, .b2, .b3, .b4, .b1clicked, .b2clicked, .b3clicked, .b4clicked{
   color: black;
-  height: 100px;
-  width: 100px;
+  height: 400px;
+  width: 400px;
+
+
 }
 
 .b1{
+  background-color: #24c974;
+}
+.b1clicked{
   background-color: Green;
 }
-
 .b2{
-  background-color: blue;
+  background-color: #4287f5;
+}
+.b2clicked
+{
+  background-color: Blue;
 }
 
 .b3{
-  background-color: red;
+  background-color: #e84f41;
+}
+.b3clicked{
+  background-color: Red;
 }
 
 .b4{
-  background-color: yellow;
+  background-color: #ffea4f;
+}
+
+.b4clicked{
+  background-color:Yellow ;
 }
