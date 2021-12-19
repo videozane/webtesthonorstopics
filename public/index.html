@@ -71,15 +71,15 @@
   //  setTimeout(() => {unhighlightClick(this.id)}, 500);
 //  }
 
-  function clicked(chosenSquare){
+function clicked(chosenSquare){
     highlightClick(chosenSquare);
     setTimeout(() => {unhighlightClick(chosenSquare)}, 500);
   }
 
 function runGame(){
   var hasNotLost = true;
-  console.log("HI:");a
-  alert("HELLO");
+
+
 
   var pattern = [];
   nextSquare = chooseRandom();
@@ -144,7 +144,7 @@ function runGame(){
 
 function showpatterns(pattern){
 
-    for(i = 0; i<pattern.length(); i++){
+    for(i = 0; i<pattern.length; i++){
       clicked(pattern[i]);
 
   }
@@ -160,7 +160,7 @@ function addtopattern(pattern, push){
   pattern.push(push);
 }
 
-document.getElementById("start").addEventListener("click", runGame();
+//document.getElementById("start").addEventListener("click", runGame());
 
   </script>
 
