@@ -46,8 +46,8 @@
       var classString = "b" + random;
 
       return classString;
-      var random2 =  Math.floor(Math.random() * (4) + 1);
-      var classString2 = "b" + random2;
+      //var random2 =  Math.floor(Math.random() * (4) + 1);
+      //var classString2 = "b" + random2;
 
   }
 
@@ -73,28 +73,43 @@
 
 function clicked(chosenSquare){
     highlightClick(chosenSquare);
-    setTimeout(() => {unhighlightClick(chosenSquare)}, 500);
+    setTimeout(() => {unhighlightClick(chosenSquare)}, 1000);
   }
-
+//playerpattern array might be completely uselss
 function runGame(){
+  console.log("Game started");
   var hasNotLost = true;
 
 
 
   var pattern = [];
-  nextSquare = chooseRandom();
+
+  var nextSquare = chooseRandom();
   addtopattern(pattern, nextSquare);
+  clicked(nextSquare);
+  var patterncopy = Array.from(pattern);
   // this will be function to add it to stored pattern addtopattern();
-  while (hasNotLost == true){
-    playerpattern = [];
-    pattern = showpatterns(pattern);
-    patterncopy = pattern;
+
+    var playerpattern = [];
+    //pattern = showpatterns(pattern);
 
     document.getElementById("b1").addEventListener("click", (event)=>{
       clicked("b1");
-      playerpattern.push("b1");
+      console.log("pattern = " + pattern);
+      console.log("patterncopy = " + patterncopy);
+      console.log("playerpattern = " + playerpattern);
+
       if("b1" == patterncopy[0]){
         patterncopy.shift();
+        console.log("pattern after patterncopy shift == " + pattern);
+
+        if(patterncopy.length == 0){
+
+          pattern = showpatterns(pattern);
+          patterncopy = Array.from(pattern);
+          console.log("nextpatterncopy  = " + patterncopy);
+          console.log("newpattern  = " + pattern);
+        }
       }
       else{
         hasNotLost = false;
@@ -104,9 +119,20 @@ function runGame(){
 
     document.getElementById("b2").addEventListener("click", (event)=>{
       clicked("b2");
-      playerpattern.push("b2");
+      console.log("pattern = " + pattern);
+      console.log("patterncopy = " + patterncopy);
+      console.log("playerpattern = " + playerpattern);
+
       if("b2" == patterncopy[0]){
         patterncopy.shift();
+        console.log("pattern after patterncopy shift == " + pattern);
+
+        if(patterncopy.length == 0){
+          pattern = showpatterns(pattern);
+          patterncopy = Array.from(pattern);
+          console.log("nextpattern  = " + patterncopy);
+
+        }
       }
       else{
         hasNotLost = false;
@@ -116,9 +142,19 @@ function runGame(){
 
     document.getElementById("b3").addEventListener("click", (event)=>{
       clicked("b3");
-      playerpattern.push("b3");
+      console.log("pattern = " + pattern);
+      console.log("patterncopy = " + patterncopy);
+      console.log("playerpattern = " + playerpattern);
+
       if("b3" == patterncopy[0]){
         patterncopy.shift();
+        console.log("pattern after patterncopy shift == " + pattern);
+        if(patterncopy.length == 0){
+          pattern = showpatterns(pattern);
+          patterncopy = Array.from(pattern);
+          console.log("nextpattern  = " + patterncopy);
+
+        }
       }
       else{
         hasNotLost = false;
@@ -128,25 +164,38 @@ function runGame(){
 
     document.getElementById("b4").addEventListener("click", (event)=>{
       clicked("b4");
-      playerpattern.push("b4");
+      console.log("pattern = " + pattern);
+      console.log("patterncopy = " + patterncopy);
+      console.log("playerpattern = " + playerpattern);
       if("b4" == patterncopy[0]){
         patterncopy.shift();
+        console.log("pattern after patterncopy shift == " + pattern);
+
+        if(patterncopy.length == 0){
+          pattern = showpatterns(pattern);
+          patterncopy = Array.from(pattern);
+          console.log("nextpattern  = " + patterncopy);
+
+        }
       }
       else{
         alert("wrong, game over haha");
       }
     })
 
-  }
+
+
+
+
 }
 //if guesses wrong pattern then webtesthonorstopicsrhea
 
 
 function showpatterns(pattern){
+  console.log("pattern for show patters: = " + pattern);//currenlty pattern is not keeping track of the old move
+    for(i = 0; i< pattern.length; i++){
 
-    for(i = 0; i<pattern.length; i++){
-      clicked(pattern[i]);
-
+      setTimeout(() => {clicked(pattern[i])}, 2000);
   }
 
   nextRandom = chooseRandom();
@@ -158,9 +207,13 @@ function showpatterns(pattern){
 
 function addtopattern(pattern, push){
   pattern.push(push);
+  console.log("adding " + push + " to array");
+  console.log("the array is now = " + pattern);
 }
 
-//document.getElementById("start").addEventListener("click", runGame());
+document.getElementById("start").addEventListener("click", function(){
+  runGame();
+});
 
   </script>
 
