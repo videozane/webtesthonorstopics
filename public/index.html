@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <title>podio</title>
-  </head>
+<head>
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <title>podio</title>
+</head>
 
-  <body>
-    <div class = "topbar">
-    </div>
+<body>
+  <div class = "topbar">
+  </div>
 
-    <div class = "spicy">
-      <h1>welcome to <em>asian pear</em></h1>
-    </div>
+  <div class = "spicy">
+    <h1>welcome to <em>asian pear</em></h1>
+  </div>
   <p class ="intro"> hey mamas join khws from 9-10 every wednesday @ mixlr.com/khws </p>
   <p> things we <strong>excel</strong> at</p>
   <ul>
     <li> having meaningful conversations</li>
     <li> playing a <em>diverse and well ordered</em> hour of music </li>
     <li> preparing our setlists really early in advance </li>
-</ul>
+  </ul>
 
-    <div class = "box2"> probably a description!</div>
-    <div class = "buttons">
+  <div class = "box2"> probably a description!</div>
+  <div class = "buttons">
     <div class = "box1"> button 1</div>
     <div class = "box1"> button 2</div>
     <div class = "box1"> button 3?</div>
@@ -36,152 +36,131 @@
     <button class = "b3" id = "b3">button3</button>
     <button class = "b4" id = "b4">button4</button>
   </div>
-  </body>
+</body>
 
-  <script>
+<script>
 
 
-  function chooseRandom(){
-      var random =  Math.floor(Math.random() * (4) + 1);
-      var classString = "b" + random;
+function chooseRandom(){
+  var random =  Math.floor(Math.random() * (4) + 1);
+  var classString = "b" + random;
+  return classString;
 
-      return classString;
-      //var random2 =  Math.floor(Math.random() * (4) + 1);
-      //var classString2 = "b" + random2;
+}
 
-  }
+function highlightClick(buttonid){
+  var buttonClicked = document.getElementById(buttonid)
+  var currentClass = buttonClicked.classList.toString();
+  buttonClicked.classList.remove(currentClass);
+  var newColor = currentClass + "clicked";
+  buttonClicked.classList.add(newColor);
+}
 
-  function highlightClick(buttonid){
-    var buttonClicked = document.getElementById(buttonid)
-    var currentClass = buttonClicked.classList.toString();
-    buttonClicked.classList.remove(currentClass);
-    var newColor = currentClass + "clicked";
-    buttonClicked.classList.add(newColor);
-  }
+function unhighlightClick(buttonid){
+  var buttonClicked = document.getElementById(buttonid)
+  var currentClass = buttonClicked.classList.toString();
+  buttonClicked.classList.remove(currentClass);
+  buttonClicked.classList.add(currentClass.substring(0,2));
+}
 
-  function unhighlightClick(buttonid){
-    var buttonClicked = document.getElementById(buttonid)
-    var currentClass = buttonClicked.classList.toString();
-    buttonClicked.classList.remove(currentClass);
-    buttonClicked.classList.add(currentClass.substring(0,2));
-  }
-
-  //function clicked(){
-  //  highlightClick(this.id);
-  //  setTimeout(() => {unhighlightClick(this.id)}, 500);
-//  }
 
 function clicked(chosenSquare){
-    highlightClick(chosenSquare);
-    setTimeout(() => {unhighlightClick(chosenSquare)}, 1000);
-  }
-//playerpattern array might be completely uselss
+  highlightClick(chosenSquare);
+  setTimeout(() => {unhighlightClick(chosenSquare)}, 1000);
+}
+
+
 function runGame(){
   console.log("Game started");
   var hasNotLost = true;
-
-
-
   var pattern = [];
-
   var nextSquare = chooseRandom();
+
   addtopattern(pattern, nextSquare);
   clicked(nextSquare);
+
   var patterncopy = Array.from(pattern);
-  // this will be function to add it to stored pattern addtopattern();
 
-    var playerpattern = [];
-    //pattern = showpatterns(pattern);
+  document.getElementById("b1").addEventListener("click", (event)=>{
+    clicked("b1");
+    console.log("pattern = " + pattern);
+    console.log("patterncopy = " + patterncopy);
 
-    document.getElementById("b1").addEventListener("click", (event)=>{
-      clicked("b1");
-      console.log("pattern = " + pattern);
-      console.log("patterncopy = " + patterncopy);
-      console.log("playerpattern = " + playerpattern);
+    if("b1" == patterncopy[0]){
+      patterncopy.shift();
+      console.log("pattern after patterncopy shift == " + pattern);
 
-      if("b1" == patterncopy[0]){
-        patterncopy.shift();
-        console.log("pattern after patterncopy shift == " + pattern);
+      if(patterncopy.length == 0){
 
-        if(patterncopy.length == 0){
-
-          pattern = showpatterns(pattern);
-          patterncopy = Array.from(pattern);
-          console.log("nextpatterncopy  = " + patterncopy);
-          console.log("newpattern  = " + pattern);
-        }
+        pattern = showpatterns(pattern);
+        patterncopy = Array.from(pattern);
+        console.log("nextpatterncopy  = " + patterncopy);
+        console.log("newpattern  = " + pattern);
       }
-      else{
-        hasNotLost = false;
-        alert("wrong, game over haha");
+    }
+    else{
+      alert("wrong, game over haha");
+    }
+  })
+
+  document.getElementById("b2").addEventListener("click", (event)=>{
+    clicked("b2");
+    console.log("pattern = " + pattern);
+    console.log("patterncopy = " + patterncopy);
+    if("b2" == patterncopy[0]){
+      patterncopy.shift();
+      console.log("pattern after patterncopy shift == " + pattern);
+
+      if(patterncopy.length == 0){
+        pattern = showpatterns(pattern);
+        patterncopy = Array.from(pattern);
+        console.log("nextpattern  = " + patterncopy);
+
       }
-    })
+    }
+    else{
+      alert("wrong, game over haha");
+    }
+  })
 
-    document.getElementById("b2").addEventListener("click", (event)=>{
-      clicked("b2");
-      console.log("pattern = " + pattern);
-      console.log("patterncopy = " + patterncopy);
-      console.log("playerpattern = " + playerpattern);
+  document.getElementById("b3").addEventListener("click", (event)=>{
+    clicked("b3");
+    console.log("pattern = " + pattern);
+    console.log("patterncopy = " + patterncopy);
+    if("b3" == patterncopy[0]){
+      patterncopy.shift();
+      console.log("pattern after patterncopy shift == " + pattern);
+      if(patterncopy.length == 0){
+        pattern = showpatterns(pattern);
+        patterncopy = Array.from(pattern);
+        console.log("nextpattern  = " + patterncopy);
 
-      if("b2" == patterncopy[0]){
-        patterncopy.shift();
-        console.log("pattern after patterncopy shift == " + pattern);
-
-        if(patterncopy.length == 0){
-          pattern = showpatterns(pattern);
-          patterncopy = Array.from(pattern);
-          console.log("nextpattern  = " + patterncopy);
-
-        }
       }
-      else{
-        hasNotLost = false;
-        alert("wrong, game over haha");
+    }
+    else{
+      alert("wrong, game over haha");
+    }
+  })
+
+  document.getElementById("b4").addEventListener("click", (event)=>{
+    clicked("b4");
+    console.log("pattern = " + pattern);
+    console.log("patterncopy = " + patterncopy);
+    if("b4" == patterncopy[0]){
+      patterncopy.shift();
+      console.log("pattern after patterncopy shift == " + pattern);
+
+      if(patterncopy.length == 0){
+        pattern = showpatterns(pattern);
+        patterncopy = Array.from(pattern);
+        console.log("nextpattern  = " + patterncopy);
+
       }
-    })
-
-    document.getElementById("b3").addEventListener("click", (event)=>{
-      clicked("b3");
-      console.log("pattern = " + pattern);
-      console.log("patterncopy = " + patterncopy);
-      console.log("playerpattern = " + playerpattern);
-
-      if("b3" == patterncopy[0]){
-        patterncopy.shift();
-        console.log("pattern after patterncopy shift == " + pattern);
-        if(patterncopy.length == 0){
-          pattern = showpatterns(pattern);
-          patterncopy = Array.from(pattern);
-          console.log("nextpattern  = " + patterncopy);
-
-        }
-      }
-      else{
-        hasNotLost = false;
-        alert("wrong, game over haha");
-      }
-    })
-
-    document.getElementById("b4").addEventListener("click", (event)=>{
-      clicked("b4");
-      console.log("pattern = " + pattern);
-      console.log("patterncopy = " + patterncopy);
-      console.log("playerpattern = " + playerpattern);
-      if("b4" == patterncopy[0]){
-        patterncopy.shift();
-        console.log("pattern after patterncopy shift == " + pattern);
-
-        if(patterncopy.length == 0){
-          pattern = showpatterns(pattern);
-          patterncopy = Array.from(pattern);
-          console.log("nextpattern  = " + patterncopy);
-
-        }
-      }
-      else{
-        alert("wrong, game over haha");
-      }
-    })
+    }
+    else{
+      alert("wrong, game over haha");
+    }
+  })
 
 
 
@@ -192,14 +171,18 @@ function runGame(){
 
 
 function showpatterns(pattern){
-  console.log("pattern for show patters: = " + pattern);//currenlty pattern is not keeping track of the old move
-    for(i = 0; i< pattern.length; i++){
+  console.log("pattern for show pattern: = " + pattern);//currenlty pattern is not keeping track of the old move
+  var counter = 0;
+  var nextRandom;
+  var myInterval =  setInterval(() => {clicked(pattern[counter]); counter ++;}, 1500);
+  nextRandom = chooseRandom();
+  if(counter == pattern.length){
+    clearInterval(myInterval);
 
-      setTimeout(() => {clicked(pattern[i])}, 2000);
+    clicked(nextRandom);
   }
 
-  nextRandom = chooseRandom();
-  clicked(nextRandom);
+
 
   addtopattern(pattern, nextRandom);
   return pattern;//say pattern = showpatterns(pattern)
@@ -215,6 +198,6 @@ document.getElementById("start").addEventListener("click", function(){
   runGame();
 });
 
-  </script>
+</script>
 
 </html>
