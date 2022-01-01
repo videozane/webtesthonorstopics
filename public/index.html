@@ -71,6 +71,7 @@ function clicked(chosenSquare){
 
 
 function runGame(){
+  var level = 1;
   console.log("Game started");
   var hasNotLost = true;
   var pattern = [];
@@ -87,11 +88,12 @@ function runGame(){
     console.log("patterncopy = " + patterncopy);
 
     if("b1" == patterncopy[0]){
+
       patterncopy.shift();
       console.log("pattern after patterncopy shift == " + pattern);
 
       if(patterncopy.length == 0){
-
+level ++;
         pattern = showpatterns(pattern);
         patterncopy = Array.from(pattern);
         console.log("nextpatterncopy  = " + patterncopy);
@@ -99,7 +101,7 @@ function runGame(){
       }
     }
     else{
-      alert("wrong, game over haha");
+      alert("wrong, game over haha you lost at level " + level );
     }
   })
 
@@ -108,10 +110,12 @@ function runGame(){
     console.log("pattern = " + pattern);
     console.log("patterncopy = " + patterncopy);
     if("b2" == patterncopy[0]){
+
       patterncopy.shift();
       console.log("pattern after patterncopy shift == " + pattern);
 
       if(patterncopy.length == 0){
+        level ++;
         pattern = showpatterns(pattern);
         patterncopy = Array.from(pattern);
         console.log("nextpattern  = " + patterncopy);
@@ -119,8 +123,7 @@ function runGame(){
       }
     }
     else{
-      alert("wrong, game over haha");
-    }
+alert("wrong, game over haha you lost at level " + level );    }
   })
 
   document.getElementById("b3").addEventListener("click", (event)=>{
@@ -128,9 +131,11 @@ function runGame(){
     console.log("pattern = " + pattern);
     console.log("patterncopy = " + patterncopy);
     if("b3" == patterncopy[0]){
+
       patterncopy.shift();
       console.log("pattern after patterncopy shift == " + pattern);
       if(patterncopy.length == 0){
+        level ++;
         pattern = showpatterns(pattern);
         patterncopy = Array.from(pattern);
         console.log("nextpattern  = " + patterncopy);
@@ -138,8 +143,7 @@ function runGame(){
       }
     }
     else{
-      alert("wrong, game over haha");
-    }
+alert("wrong, game over haha you lost at level " + level );    }
   })
 
   document.getElementById("b4").addEventListener("click", (event)=>{
@@ -147,10 +151,12 @@ function runGame(){
     console.log("pattern = " + pattern);
     console.log("patterncopy = " + patterncopy);
     if("b4" == patterncopy[0]){
+
       patterncopy.shift();
       console.log("pattern after patterncopy shift == " + pattern);
 
       if(patterncopy.length == 0){
+        level ++;
         pattern = showpatterns(pattern);
         patterncopy = Array.from(pattern);
         console.log("nextpattern  = " + patterncopy);
@@ -158,8 +164,7 @@ function runGame(){
       }
     }
     else{
-      alert("wrong, game over haha");
-    }
+alert("wrong, game over haha you lost at level " + level );    }
   })
 
 
@@ -173,9 +178,8 @@ function runGame(){
 function showpatterns(pattern){
   console.log("pattern for show pattern: = " + pattern);//currenlty pattern is not keeping track of the old move
   var counter = 0;
-  var nextRandom;
   var myInterval =  setInterval(() => {clicked(pattern[counter]); counter ++;}, 1500);
-  nextRandom = chooseRandom();
+  var nextRandom = chooseRandom();
   if(counter == pattern.length){
     clearInterval(myInterval);
 
