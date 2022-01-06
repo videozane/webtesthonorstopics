@@ -41,7 +41,9 @@
 
 <script>
 
-  window.localStorage.setItem("myHighScore", 0);
+  if(window.localStorage.getItem("myHighScore") == null){
+    window.localStorage.setItem("myHighScore", 0);
+  }
   document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
   function chooseRandom(){
   var random =  Math.floor(Math.random() * (4) + 1);
