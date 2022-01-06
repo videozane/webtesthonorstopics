@@ -29,6 +29,7 @@
 
   <div class = "simon">
     <button class = "start" id ="start">START GAME</button>
+    <h3 class = "highscore" id = "highscore">high score:  </h3>
     <br>
     <button class = "b1" id = "b1">button1</button>
     <button class = "b2" id = "b2">button2</button>
@@ -40,11 +41,14 @@
 
 <script>
 
-
-function chooseRandom(){
+  window.localStorage.setItem("myHighScore", 0);
+  document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
+  function chooseRandom(){
   var random =  Math.floor(Math.random() * (4) + 1);
   var classString = "b" + random;
   return classString;
+
+
 
 }
 
@@ -101,6 +105,11 @@ level ++;
       }
     }
     else{
+      if(level > window.localStorage.getItem("myHighScore")){
+        window.localStorage.setItem("myHighScore", level);
+        document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
+
+      }
       alert("wrong, game over haha you lost at level " + level );
     }
   })
@@ -123,6 +132,10 @@ level ++;
       }
     }
     else{
+      if(level > window.localStorage.getItem("myHighScore")){
+        window.localStorage.setItem("myHighScore", level);
+        document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
+      }
 alert("wrong, game over haha you lost at level " + level );    }
   })
 
@@ -143,6 +156,10 @@ alert("wrong, game over haha you lost at level " + level );    }
       }
     }
     else{
+      if(level > window.localStorage.getItem("myHighScore")){
+        window.localStorage.setItem("myHighScore", level);
+        document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
+      }
 alert("wrong, game over haha you lost at level " + level );    }
   })
 
@@ -164,12 +181,12 @@ alert("wrong, game over haha you lost at level " + level );    }
       }
     }
     else{
-alert("wrong, game over haha you lost at level " + level );    }
+      if(level > window.localStorage.getItem("myHighScore")){
+        window.localStorage.setItem("myHighScore", level);
+        document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
+      }
+      alert("wrong, game over haha you lost at level " + level );    }
   })
-
-
-
-
 
 }
 //if guesses wrong pattern then webtesthonorstopicsrhea
