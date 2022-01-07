@@ -41,17 +41,15 @@
 
 <script>
 
-  if(window.localStorage.getItem("myHighScore") == null){
-    window.localStorage.setItem("myHighScore", 0);
-  }
-  document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
-  function chooseRandom(){
+if(window.localStorage.getItem("myHighScore") == null){
+  window.localStorage.setItem("myHighScore", 0);
+}
+
+document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
+function chooseRandom(){
   var random =  Math.floor(Math.random() * (4) + 1);
   var classString = "b" + random;
   return classString;
-
-
-
 }
 
 function highlightClick(buttonid){
@@ -99,7 +97,7 @@ function runGame(){
       console.log("pattern after patterncopy shift == " + pattern);
 
       if(patterncopy.length == 0){
-level ++;
+        level ++;
         pattern = showpatterns(pattern);
         patterncopy = Array.from(pattern);
         console.log("nextpatterncopy  = " + patterncopy);
@@ -138,89 +136,91 @@ level ++;
         window.localStorage.setItem("myHighScore", level);
         document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
       }
-alert("wrong, game over haha you lost at level " + level );    }
-  })
-
-  document.getElementById("b3").addEventListener("click", (event)=>{
-    clicked("b3");
-    console.log("pattern = " + pattern);
-    console.log("patterncopy = " + patterncopy);
-    if("b3" == patterncopy[0]){
-
-      patterncopy.shift();
-      console.log("pattern after patterncopy shift == " + pattern);
-      if(patterncopy.length == 0){
-        level ++;
-        pattern = showpatterns(pattern);
-        patterncopy = Array.from(pattern);
-        console.log("nextpattern  = " + patterncopy);
-
-      }
-    }
-    else{
-      if(level > window.localStorage.getItem("myHighScore")){
-        window.localStorage.setItem("myHighScore", level);
-        document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
-      }
-alert("wrong, game over haha you lost at level " + level );    }
-  })
-
-  document.getElementById("b4").addEventListener("click", (event)=>{
-    clicked("b4");
-    console.log("pattern = " + pattern);
-    console.log("patterncopy = " + patterncopy);
-    if("b4" == patterncopy[0]){
-
-      patterncopy.shift();
-      console.log("pattern after patterncopy shift == " + pattern);
-
-      if(patterncopy.length == 0){
-        level ++;
-        pattern = showpatterns(pattern);
-        patterncopy = Array.from(pattern);
-        console.log("nextpattern  = " + patterncopy);
-
-      }
-    }
-    else{
-      if(level > window.localStorage.getItem("myHighScore")){
-        window.localStorage.setItem("myHighScore", level);
-        document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
-      }
       alert("wrong, game over haha you lost at level " + level );    }
-  })
+    })
 
-}
-//if guesses wrong pattern then webtesthonorstopicsrhea
+    document.getElementById("b3").addEventListener("click", (event)=>{
+      clicked("b3");
+      console.log("pattern = " + pattern);
+      console.log("patterncopy = " + patterncopy);
+      if("b3" == patterncopy[0]){
+
+        patterncopy.shift();
+        console.log("pattern after patterncopy shift == " + pattern);
+        if(patterncopy.length == 0){
+          level ++;
+          pattern = showpatterns(pattern);
+          patterncopy = Array.from(pattern);
+          console.log("nextpattern  = " + patterncopy);
+
+        }
+      }
+      else{
+        if(level > window.localStorage.getItem("myHighScore")){
+          window.localStorage.setItem("myHighScore", level);
+          document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
+        }
+        alert("wrong, game over haha you lost at level " + level );    }
+      })
+
+      document.getElementById("b4").addEventListener("click", (event)=>{
+        clicked("b4");
+        console.log("pattern = " + pattern);
+        console.log("patterncopy = " + patterncopy);
+        if("b4" == patterncopy[0]){
+
+          patterncopy.shift();
+          console.log("pattern after patterncopy shift == " + pattern);
+
+          if(patterncopy.length == 0){
+            level ++;
+            pattern = showpatterns(pattern);
+            patterncopy = Array.from(pattern);
+            console.log("nextpattern  = " + patterncopy);
+
+          }
+        }
+        else{
+          if(level > window.localStorage.getItem("myHighScore")){
+            window.localStorage.setItem("myHighScore", level);
+            document.getElementById('highscore').innerHTML = "high score: " + window.localStorage.getItem("myHighScore");
+          }
+          alert("wrong, game over haha you lost at level " + level );    }
+        })
+
+      }
+      //if guesses wrong pattern then webtesthonorstopicsrhea
 
 
-function showpatterns(pattern){
-  console.log("pattern for show pattern: = " + pattern);//currenlty pattern is not keeping track of the old move
-  var counter = 0;
-  var myInterval =  setInterval(() => {clicked(pattern[counter]); counter ++;}, 1500);
-  var nextRandom = chooseRandom();
-  if(counter == pattern.length){
-    clearInterval(myInterval);
+      function showpatterns(pattern){
+        console.log("pattern for show pattern: = " + pattern);//currenlty pattern is not keeping track of the old move
+        var counter = 0;
+        var myInterval =  setInterval(() => {clicked(pattern[counter]); counter ++;
+          if(counter == pattern.length){
+            clearInterval(myInterval);
 
-    clicked(nextRandom);
-  }
+            clicked(nextRandom);
+          }}, 1500);
+        var nextRandom = chooseRandom();
+
+        
 
 
 
-  addtopattern(pattern, nextRandom);
-  return pattern;//say pattern = showpatterns(pattern)
-}
+        addtopattern(pattern, nextRandom);
+        return pattern;//say pattern = showpatterns(pattern)
+      }
 
-function addtopattern(pattern, push){
-  pattern.push(push);
-  console.log("adding " + push + " to array");
-  console.log("the array is now = " + pattern);
-}
+      function addtopattern(pattern, push){
+        pattern.push(push);
+        console.log("adding " + push + " to array");
+        console.log("the array is now = " + pattern);
+      }
 
-document.getElementById("start").addEventListener("click", function(){
-  runGame();
-});
+      document.getElementById("start").addEventListener("click", function(){
+        runGame();
+      });
 
-</script>
+      </script>
 
-</html>
+      </html>
