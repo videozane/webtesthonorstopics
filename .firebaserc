@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "webtesthonorstopics"
-  }
+    "default": "webtesthonorstopics",
+    "updating": "webtesthonorstopicsrhea"
+  },
+  "targets": {}
 }
