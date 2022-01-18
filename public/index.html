@@ -27,6 +27,11 @@
     <div class = "box1"> button 3?</div>
   </div>
 
+  <p class ="intro">art project</p>
+  </div>
+
+  <canvas id="canvas" width="900" height="500"></canvas>
+
   <div class = "simon">
     <button class = "start" id ="start">START GAME</button>
     <h3 class = "highscore" id = "highscore">high score:  </h3>
@@ -223,4 +228,64 @@ function runGame(){
 
       </script>
 
-      </html>
+      <script>
+
+      function initializeAnimation() {
+  window.requestAnimationFrame(draw);
+}
+
+function drawArt(ctx) {
+  //draw circle
+  ctx.beginPath();
+  ctx.arc(-250, -50, 45, 0, Math.PI * 2, false);
+  ctx.stroke();
+
+  // Draw triangle
+  ctx.beginPath();
+  ctx.moveTo(-190, -120);
+  ctx.lineTo(-100, -70);
+  ctx.lineTo(-100, 40);
+  ctx.lineTo(-190, -120);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(-205, -50);
+  ctx.lineTo(-90,-130);
+  ctx.lineTo(35,-50);
+  ctx.lineTo(-20,70);
+  ctx.lineTo(-150,70);
+  ctx.lineTo(-205,-50);
+  ctx.stroke();
+
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(-100, -180);
+  ctx.lineTo(140, 120);
+  ctx.stroke();
+
+}
+
+function draw() {
+  var ctx = document.getElementById('canvas').getContext('2d');
+
+  ctx.globalCompositeOperation = 'destination-over';
+  ctx.clearRect(0, 0, 900, 700); // clear canvas
+
+  // Figure out what pen we wanna draw with
+  ctx.fillStyle = 'rgba(0, 153, 255, 1)';
+  ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)';
+
+  ctx.save();
+  ctx.translate(450, 250);
+  drawArt(ctx);
+  ctx.restore();
+
+
+  // Call draw when the website is ready
+  window.requestAnimationFrame(draw);
+}
+
+initializeAnimation();
+</script>
+
+</html>
