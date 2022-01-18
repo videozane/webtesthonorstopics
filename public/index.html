@@ -236,19 +236,33 @@ function runGame(){
 
 function drawArt(ctx) {
   //draw circle
+  ctx.save();
+  var time2 = new Date();
+  ctx.translate(time2.getSeconds()*6, 0);
+  ctx.lineWidth=2;
   ctx.beginPath();
   ctx.arc(-250, -50, 45, 0, Math.PI * 2, false);
   ctx.stroke();
+  ctx.restore();
 
   // Draw triangle
+  ctx.save();
+  ctx.lineWidth=2;
   ctx.beginPath();
+  var time = new Date();
+  ctx.rotate(time.getSeconds() + time.getMilliseconds() / 1000);
+  ctx.translate(time.getSeconds()*6,0);
   ctx.moveTo(-190, -120);
   ctx.lineTo(-100, -70);
   ctx.lineTo(-100, 40);
   ctx.lineTo(-190, -120);
   ctx.stroke();
+  ctx.restore();
 
+  ctx.save();
+  ctx.lineWidth=2;
   ctx.beginPath();
+  ctx.translate(time.getSeconds()*6,0);
   ctx.moveTo(-205, -50);
   ctx.lineTo(-90,-130);
   ctx.lineTo(35,-50);
@@ -256,12 +270,16 @@ function drawArt(ctx) {
   ctx.lineTo(-150,70);
   ctx.lineTo(-205,-50);
   ctx.stroke();
+  ctx.restore();
 
+  ctx.save();
   ctx.lineWidth = 2;
   ctx.beginPath();
+  ctx.translate(time.getSeconds()*6,0);
   ctx.moveTo(-100, -180);
   ctx.lineTo(140, 120);
   ctx.stroke();
+  ctx.restore();
 
 }
 
